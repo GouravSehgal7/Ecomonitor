@@ -1,280 +1,118 @@
-// "use client"
-
-// import type React from "react"
-
-// import { useState } from "react"
-// import { useRouter } from "next/navigation"
-// import { registerUser } from "@/app/actions/user-actions"
-// import { Button } from "@/components/ui/button"
-// import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-// import { Checkbox } from "@/components/ui/checkbox"
-// import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/ui/label"
-// import { Separator } from "@/components/ui/separator"
-// import { useToast } from "@/components/ui/use-toast"
-
-// export function UserRegistrationForm() {
-//   const [isSubmitting, setIsSubmitting] = useState(false)
-//   const { toast } = useToast()
-//   const router = useRouter()
-
-//   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-//     event.preventDefault()
-//     setIsSubmitting(true)
-
-//     try {
-//       const formData = new FormData(event.currentTarget)
-//       const result = await registerUser(formData)
-
-//       if (result.success) {
-//         toast({
-//           title: "Registration successful",
-//           description: result.message,
-//           variant: "default",
-//         })
-
-//         // Redirect to dashboard (home page) after successful registration
-//         router.push("/")
-//       } else {
-//         toast({
-//           title: "Registration failed",
-//           description: result.message,
-//           variant: "destructive",
-//         })
-//       }
-//     } catch (error) {
-//       toast({
-//         title: "Error",
-//         description: "An unexpected error occurred. Please try again.",
-//         variant: "destructive",
-//       })
-//     } finally {
-//       setIsSubmitting(false)
-//     }
-//   }
-
-//   return (
-//     <Card className="w-full max-w-md bg-white/10 backdrop-blur-sm border-white/20">
-//       <CardHeader>
-//         <CardTitle className="text-white">User Registration</CardTitle>
-//         <CardDescription className="text-white/70">
-//           Create your account to receive personalized pollution alerts
-//         </CardDescription>
-//       </CardHeader>
-//       <form onSubmit={handleSubmit}>
-//         <CardContent className="space-y-4">
-//           <div className="space-y-2">
-//             <Label htmlFor="name" className="text-white">
-//               Full Name
-//             </Label>
-//             <Input
-//               id="name"
-//               name="name"
-//               placeholder="Enter your full name"
-//               required
-//               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//             />
-//           </div>
-
-//           <div className="space-y-2">
-//             <Label htmlFor="phoneNumber" className="text-white">
-//               Phone Number
-//             </Label>
-//             <Input
-//               id="phoneNumber"
-//               name="phoneNumber"
-//               type="tel"
-//               placeholder="+91 XXXXX XXXXX"
-//               required
-//               pattern="[0-9]{10}"
-//               maxLength={10}
-//               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//             />
-//             <p className="text-xs text-white/70">Enter 10 digit mobile number without country code</p>
-//           </div>
-
-//           <div className="space-y-2">
-//             <Label htmlFor="email" className="text-white">
-//               Email Address
-//             </Label>
-//             <Input
-//               id="email"
-//               name="email"
-//               type="email"
-//               placeholder="your@email.com"
-//               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//             />
-//           </div>
-
-//           <Separator className="bg-white/20" />
-
-//           <div className="space-y-2">
-//             <Label className="text-white">Health Profile</Label>
-
-//             <div className="grid grid-cols-2 gap-2">
-//               <div>
-//                 <Label htmlFor="age" className="text-sm text-white/70">
-//                   Age
-//                 </Label>
-//                 <Input
-//                   id="age"
-//                   name="age"
-//                   type="number"
-//                   placeholder="Age"
-//                   className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//                 />
-//               </div>
-
-//               <div>
-//                 <Label htmlFor="conditions" className="text-sm text-white/70">
-//                   Health Conditions
-//                 </Label>
-//                 <Input
-//                   id="conditions"
-//                   name="conditions"
-//                   placeholder="Asthma, Diabetes, etc."
-//                   className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-
-//           <Separator className="bg-white/20" />
-
-//           <div className="space-y-2">
-//             <Label className="text-white">Notification Preferences</Label>
-
-//             <div className="space-y-2">
-//               <Label className="text-sm text-white/70">Alert Types</Label>
-//               <div className="grid grid-cols-2 gap-2">
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyAirQuality" name="notifyAirQuality" defaultChecked />
-//                   <Label htmlFor="notifyAirQuality" className="text-sm text-white">
-//                     Air Quality
-//                   </Label>
-//                 </div>
-
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyWaterQuality" name="notifyWaterQuality" defaultChecked />
-//                   <Label htmlFor="notifyWaterQuality" className="text-sm text-white">
-//                     Water Quality
-//                   </Label>
-//                 </div>
-
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyUVIndex" name="notifyUVIndex" />
-//                   <Label htmlFor="notifyUVIndex" className="text-sm text-white">
-//                     UV Index
-//                   </Label>
-//                 </div>
-
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyTraffic" name="notifyTraffic" />
-//                   <Label htmlFor="notifyTraffic" className="text-sm text-white">
-//                     Traffic Alerts
-//                   </Label>
-//                 </div>
-//               </div>
-//             </div>
-
-//             <div className="space-y-2">
-//               <Label className="text-sm text-white/70">Notification Methods</Label>
-//               <div className="grid grid-cols-3 gap-2">
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifySMS" name="notifySMS" defaultChecked />
-//                   <Label htmlFor="notifySMS" className="text-sm text-white">
-//                     SMS
-//                   </Label>
-//                 </div>
-
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyEmail" name="notifyEmail" />
-//                   <Label htmlFor="notifyEmail" className="text-sm text-white">
-//                     Email
-//                   </Label>
-//                 </div>
-
-//                 <div className="flex items-center space-x-2">
-//                   <Checkbox id="notifyPush" name="notifyPush" defaultChecked />
-//                   <Label htmlFor="notifyPush" className="text-sm text-white">
-//                     Push
-//                   </Label>
-//                 </div>
-//               </div>
-//             </div>
-
-//             <div className="space-y-2">
-//               <Label htmlFor="areaOfInterest" className="text-sm text-white/70">
-//                 Area of Interest
-//               </Label>
-//               <Input
-//                 id="areaOfInterest"
-//                 name="areaOfInterest"
-//                 placeholder="Delhi, India"
-//                 defaultValue="Delhi, India"
-//                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-//               />
-//             </div>
-//           </div>
-//         </CardContent>
-//         <CardFooter>
-//           <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={isSubmitting}>
-//             {isSubmitting ? "Registering..." : "Register"}
-//           </Button>
-//         </CardFooter>
-//       </form>
-//     </Card>
-//   )
-// }
-
-
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { registerUser, loginUser } from "@/app/actions/user-actions"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import { useToast } from "@/components/ui/use-toast"
-import Link from "next/link";
+import { Gettokendata } from "@/lib/firebase"
 
-export function AuthForm({ type }: { type: "signup" | "login" }) {
+interface FormData {
+  name: string
+  email: string
+  age: number
+  token: string
+}
+
+interface ApiResponse {
+  success: boolean
+  message: string
+  user?: {
+    _id: string
+    name: string
+    email: string
+    age: string // Matches your API response
+    token: string
+    __v?: number
+}
+}
+
+export function AuthForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    age: 0,
+    token: ""
+  })
   const { toast } = useToast()
   const router = useRouter()
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === "age" ? parseInt(value) || 0 : value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      const formData = new FormData(event.currentTarget)
-      const action = type === "signup" ? registerUser : loginUser
-      const result = await action(formData)
-
-      if (result.success) {
+      // Get FCM token
+      const fcmToken = await Gettokendata()
+      
+      if (!fcmToken) {
         toast({
-          title: `${type === "signup" ? "Registration" : "Login"} successful`,
-          description: result.message,
+          title: "Notification warning",
+          description: "Notifications may not work without token",
           variant: "default",
         })
-        router.push("/")
-      } else {
-        toast({
-          title: `${type === "signup" ? "Registration" : "Login"} failed`,
-          description: result.message,
-          variant: "destructive",
-        })
       }
+
+      // Prepare final data with token
+      const submissionData = {
+        ...formData,
+        token: fcmToken || ""
+      }
+
+      // Send to API
+      const response = await fetch('/api/subscribe-to-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      })
+
+      const result: ApiResponse = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Submission failed')
+      }
+
+      // Store user data in localStorage
+      if (result.user) {
+        localStorage.setItem('userData', JSON.stringify(result.user))
+      }
+
+      toast({
+        title: "Success",
+        description: result.message || "Registration completed successfully!",
+        variant: "default",
+      })
+
+      // Redirect to home page
+      router.push("/")
+
     } catch (error) {
+      console.error("Submission error:", error)
+      
+      // Clear form on error
+      setFormData({
+        name: "",
+        email: "",
+        age: 0,
+        token: ""
+      })
+
       toast({
         title: "Error",
-        description: "An unexpected error occurred. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to submit form. Please try again.",
         variant: "destructive",
       })
     } finally {
@@ -282,30 +120,34 @@ export function AuthForm({ type }: { type: "signup" | "login" }) {
     }
   }
 
+  // Validate form inputs
+  const isFormValid = formData.name.trim() !== "" && 
+                     formData.email.includes('@') && 
+                     formData.age > 0
+
   return (
     <Card className="w-full max-w-md bg-white/10 backdrop-blur-sm border-white/20">
       <CardHeader>
-        <CardTitle className="text-white">{type === "signup" ? "User Registration" : "User Login"}</CardTitle>
+        <CardTitle className="text-white">Get notification</CardTitle>
         <CardDescription className="text-white/70">
-          {type === "signup"
-            ? "Create your account to receive personalized pollution alerts"
-            : "Login to your account"}
+          Get real time personalized notification
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
-          {type === "signup" && (
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-white">Full Name</Label>
-              <Input
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                required
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-              />
-            </div>
-          )}
+          <div className="space-y-2">
+            <Label htmlFor="name" className="text-white">Full Name</Label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your full name"
+              required
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              disabled={isSubmitting}
+            />
+          </div>
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-white">Email Address</Label>
@@ -313,70 +155,44 @@ export function AuthForm({ type }: { type: "signup" | "login" }) {
               id="email"
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="your@email.com"
               required
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              disabled={isSubmitting}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-white">Password</Label>
+            <Label htmlFor="age" className="text-white">Age</Label>
             <Input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
+              id="age"
+              name="age"
+              type="number"
+              value={formData.age}
+              onChange={handleChange}
+              placeholder="Enter your age"
               required
+              min="1"
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              disabled={isSubmitting}
             />
           </div>
-
-          {/* {type === "signup" && (
-            <>
-              <Separator className="bg-white/20" />
-              <div className="space-y-2">
-                <Label className="text-white">Notification Preferences</Label>
-                <div className="space-y-2">
-                  <Label className="text-sm text-white/70">Notification Methods</Label>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="notifySMS" name="notifySMS" defaultChecked />
-                      <Label htmlFor="notifySMS" className="text-sm text-white">SMS</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="notifyEmail" name="notifyEmail" />
-                      <Label htmlFor="notifyEmail" className="text-sm text-white">Email</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="notifyPush" name="notifyPush" defaultChecked />
-                      <Label htmlFor="notifyPush" className="text-sm text-white">Push</Label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )} */}
         </CardContent>
         <CardFooter>
-            <div className=" flex flex-col items-center justify-center w-full">
-          <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={isSubmitting}>
-            {isSubmitting ? (type === "signup" ? "Registering..." : "Logging in...") : type === "signup" ? "Register" : "Login"}
-          </Button>
-          <p>
-  {type === "signup" ? (
-    <>
-      Already have an account? <Link href="/login">Login</Link>
-    </>
-  ) : (
-    <>
-      Don’t have an account? <Link href="/register">Register</Link>
-    </>
-  )}
-</p>
-
+          <div className="flex flex-col items-center justify-center w-full">
+            <Button 
+              type="submit" 
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white" 
+              disabled={isSubmitting || !isFormValid}
+            >
+              {isSubmitting ? "Proceeding..." : "Done"}
+            </Button>
           </div>
         </CardFooter>
       </form>
     </Card>
   )
 }
+

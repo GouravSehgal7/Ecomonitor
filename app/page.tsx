@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AirQualityChart } from "@/components/air-quality-chart"
 import { AirQualityMap } from "@/components/air-quality-map"
-import { PollutionIndex } from "@/components/pollution-index"
+// import { PollutionIndex } from "@/components/pollution-index"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Bell, Info } from "lucide-react"
 import Link from "next/link"
@@ -20,12 +20,11 @@ import { Gettokendata, onMessageListener } from "../lib/firebase"
 export default function HomePage() {
 
   function requestPermission() {
-    console.log("Requesting permission...");
+    // console.log("Requesting permission...");
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         console.log("Notification permission granted.");
-        const token = Gettokendata();
-        
+        // const token = Gettokendata();
       } else {
         console.log("Notification permission denied.");
       }
@@ -34,8 +33,6 @@ export default function HomePage() {
 
   useEffect(() => {
    requestPermission() 
-
-
     // onMessageListener().then((payload) => {
     //   alert(`New Notification: ${payload.notification.title}`);
     // }).catch((err) => console.log("Notification error: ", err));
@@ -81,7 +78,7 @@ export default function HomePage() {
             </CardContent>
           </Card> */}
 
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+          {/* <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader className="pb-2">
               <CardTitle className="text-white">Health Impact</CardTitle>
               <CardDescription className="text-white/70">Current air quality health effects</CardDescription>
@@ -106,7 +103,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
 
         <Card className="bg-white/10 backdrop-blur-sm border-white/20">

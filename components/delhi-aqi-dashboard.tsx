@@ -304,7 +304,7 @@ export function DelhiAQIDashboard() {
                       <div key={key} className="p-3 rounded-md bg-white/10">
                         <div className="text-sm font-medium text-white mb-1">{key.toUpperCase()}</div>
                         <div className="flex items-end gap-1">
-                          <span className="text-xl font-bold text-white">{data.value}</span>
+                          <span className="text-xl font-bold text-white">{Math.floor(Number(data.value))}</span>
                           <span className="text-sm text-white/70">{data.unit}</span>
                         </div>
                         <div className="mt-1 h-1 bg-white/20 rounded-full overflow-hidden">

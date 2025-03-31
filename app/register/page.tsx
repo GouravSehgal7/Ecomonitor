@@ -1,3 +1,4 @@
+
 import { AuthForm } from "@/components/user-registration-form"
 import { AnimatedBackground } from "@/components/animated-background"
 import { NavigationBar } from "@/components/navigation-bar"
@@ -9,7 +10,7 @@ export default function RegisterPage() {
       <NavigationBar />
 
       <div className="container relative mx-auto py-6 pt-20 flex justify-center z-10">
-        <AuthForm type = "signup" />
+        <AuthForm />
       </div>
     </div>
   )

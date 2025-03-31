@@ -120,7 +120,7 @@ export default function UVIndexPage() {
             const position = await getPositionPromise
             latitude = position.coords.latitude
             longitude = position.coords.longitude
-            console.log("Using user location:", latitude, longitude)
+            // console.log("Using user location:", latitude, longitude)
           }
         } catch (error) {
           console.log("Using default location due to:", error instanceof Error ? error.message : "Unknown error")
@@ -129,7 +129,7 @@ export default function UVIndexPage() {
 
         // Fetch data with either user coordinates or defaults
         const apiData = await fetchUVData(latitude, longitude)
-console.log("apiData",apiData);
+// console.log("apiData",apiData);
 
         // Transform API data to match our format
         const transformedData = {
@@ -166,7 +166,7 @@ console.log("apiData",apiData);
           },
           getUVProtectionRecommendation:apiData.getUVProtectionRecommendations,
         }
-        console.log(transformedData);
+        // console.log(transformedData);
         
         setUvData(transformedData)
 

@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage, isSupported } from "firebase/messaging";
 import { firebaseConfig } from "./firebaseconfig";
 
-const VAPID_KEY = "BJwikRuLy2Fwdw-XlRiZMrWe7BJveu9JHF-iC7TGlFSC1yf2VKdBwPf2EjVd0SP0hfEUdeePiqW0gLAXd4RF_nE";
+const VAPID_KEY = process.env.NEXT_PUBLIC_VAPID_KEY;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -27,7 +27,7 @@ export const Gettokendata = async () => {
     }
 
     // Ensure Service Worker is registered
-    const registration = await navigator.serviceWorker.register("./firebase-messaging-sw.js");
+    const registration = await navigator.serviceWorker.register("/firebase-messaging-sw.js");
     console.log("Service Worker registered:", registration);
 
     // Get the FCM token
@@ -57,7 +57,7 @@ export const onMessageListener = () =>
       return;
     }
     onMessage(messaging, (payload) => {
-      console.log("New Notification:", payload);
+      alert(`New Notification: ${payload?.notification?.title}`);
       resolve(payload);
     });
   });

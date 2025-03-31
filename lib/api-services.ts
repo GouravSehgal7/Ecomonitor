@@ -1,8 +1,8 @@
 // API services for fetching environmental data
 import axios from 'axios'
-const BASE_URL = 'https://api.waqi.info';
-const WAQI_TOKEN = 'b88abf98bd46a6bfdf78557ded1699691e2ace94';
-const MEERSENS_API_KEY = 'WZZrxMFRud2XHuAqYBF5t5YoHgRNCUk8';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const WAQI_TOKEN = process.env.NEXT_PUBLIC_WAQI_TOKEN;
+const MEERSENS_API_KEY = process.env.NEXT_PUBLIC_MEERSENS_API_KEY;
 // Helper function to safely get user location with fallback
 export async function getUserLocation(defaultLat = 28.6139, defaultLng = 77.209) {
   return new Promise<{ latitude: number; longitude: number }>((resolve) => {
@@ -22,7 +22,7 @@ export async function getUserLocation(defaultLat = 28.6139, defaultLng = 77.209)
       navigator.geolocation.getCurrentPosition(
         (position) => {
           clearTimeout(timeoutId)
-          console.log("Running");
+          // console.log("Running");
           
           resolve({
             latitude: position.coords.latitude,
@@ -88,7 +88,7 @@ export async function fetchUVData(latitude?: number, longitude?: number) {
     if (!data || !data.data || !data.data.index) {
       throw new Error("Invalid response from API");
     }
-    console.log("uvdata",data.data);
+    // console.log("uvdata",data.data);
     
 
 
@@ -123,7 +123,7 @@ export async function fetchUVData(latitude?: number, longitude?: number) {
       },
     };
 
-    console.log("mockResponse.data", mockResponse.data);
+    // console.log("mockResponse.data", mockResponse.data);
     return mockResponse.data;
 
   } catch (error) {

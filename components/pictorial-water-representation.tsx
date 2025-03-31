@@ -262,7 +262,7 @@ export function PictorialWaterRepresentation() {
                     </div>
                   </div>
 
-                  <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
+                  {/* <div className="absolute inset-y-0 left-30 right-0 flex items-center justify-between px-4">
                     <div className="text-white text-xs">0</div>
                     <div className="text-white text-xs font-medium">
                       {param.safeRange.includes("<")
@@ -270,7 +270,7 @@ export function PictorialWaterRepresentation() {
                         : param.safeRange.split("-")[1]}
                     </div>
                     <div className="text-white text-xs">{param.name === "pH" ? "14" : "High"}</div>
-                  </div>
+                  </div> */}
                 </div>
                 <p className="mt-2 text-xs text-white/70 text-center">
                   {param.name === "pH"

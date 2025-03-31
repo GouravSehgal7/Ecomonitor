@@ -39,6 +39,28 @@ export default function WaterQualityPage() {
   // Add this function inside the component before the return statement
   const { toast } = useToast()
 
+  const handleReportIssue = () => {
+    setShowCallDialog(true)
+  }
+  
+  const handleMakeReportCall = () => {
+    try {
+      window.location.href = "tel:1916" // Different number for reporting issues
+      toast({
+        title: "Calling Water Quality Helpline",
+        description: "Connecting to 1916...",
+      })
+    } catch (error) {
+      console.error("Error making call:", error)
+      toast({
+        title: "Call Failed",
+        description: "Unable to initiate call. Please dial 1916 manually.",
+        variant: "destructive",
+      })
+    }
+    setShowCallDialog(false)
+  }
+
   const handleCallMCD = () => {
     setShowCallDialog(true)
   }
