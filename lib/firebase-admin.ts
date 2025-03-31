@@ -1,5 +1,9 @@
 import admin from "firebase-admin";
-import  serviceAccount from "../pollution-messaging-web-firebase-adminsdk-fbsvc-f3a6175052.json"; // Get this from Firebase console
+import fs from "fs";
+
+// Load the secret file from the specified path
+const serviceAccountPath = "pollution-messaging-web-firebase-adminsdk-fbsvc-f3a6175052.json";
+const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
 
 if (!admin.apps.length) {
   admin.initializeApp({
