@@ -6,7 +6,7 @@ export default async function handler() {
     // Get current time in UTC seconds
     const now = new Date();
     const secondsNow =
-    now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
+      now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     console.log("current time",secondsNow);
     console.log(now.toISOString());
     
