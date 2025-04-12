@@ -36,7 +36,7 @@ export default async function handler() {
       notification: { title, body },
       tokens: tokenlist,
     };
-console.log(message);
+// console.log(message);
 
     // Validate message format (basic validation)
     if (!title || !body || !Array.isArray(message.tokens) || message.tokens.length === 0) {
@@ -45,7 +45,7 @@ console.log(message);
 
     // Send the message to all tokens
     const response = await messaging.sendEachForMulticast(message);
-console.log(response);
+// console.log(response);
 
     // Check if the message was sent successfully
     if (response.successCount > 0) {
