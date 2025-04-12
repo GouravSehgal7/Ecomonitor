@@ -17,7 +17,14 @@ export function generateToken(user: { id: string; email: string }) {
 
 export function ConvertToSec(time:string){
   const [hours, minutes] = time.split(':').map(Number);
-  console.log("hours",hours);
-  console.log("minutes",minutes);
-  return hours * 3600 + minutes*60;
+  const localDate = new Date();
+localDate.setHours(hours, minutes, 0, 0);
+
+// Get the equivalent UTC time in seconds since midnight
+const utcHours = localDate.getUTCHours();
+const utcMinutes = localDate.getUTCMinutes();
+const utcSeconds = localDate.getUTCSeconds();
+
+const utcTotalSeconds = utcHours * 3600 + utcMinutes * 60 + utcSeconds;
+return utcTotalSeconds
 }
