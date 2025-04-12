@@ -26,5 +26,7 @@ const utcMinutes = localDate.getUTCMinutes();
 const utcSeconds = localDate.getUTCSeconds();
 
 const utcTotalSeconds = utcHours * 3600 + utcMinutes * 60 + utcSeconds;
+console.log("usertime",utcTotalSeconds);
+
 return utcTotalSeconds
 }

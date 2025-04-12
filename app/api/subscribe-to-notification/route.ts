@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
 
           if(newUser){
-       
+            
             await redis.zadd("Notification token",newUser.time,newUser.token)
             console.log("newUser.time",newUser.time);
             
