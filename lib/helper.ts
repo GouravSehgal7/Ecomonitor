@@ -14,3 +14,10 @@ export async function comparePasswords(password: string, hashedPassword: string)
 export function generateToken(user: { id: string; email: string }) {
   return jwt.sign(user, SECRET, { expiresIn: "1h" });
 }
+
+export function ConvertToSec(time:string){
+  const [hours, minutes] = time.split(':').map(Number);
+  console.log("hours",hours);
+  console.log("minutes",minutes);
+  return hours * 3600 + minutes*60;
+}

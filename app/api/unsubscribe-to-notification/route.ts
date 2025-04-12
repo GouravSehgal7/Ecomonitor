@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import UserModel from "@/lib/usermodel";
 import connectDB from "@/lib/mongodb";
+import redis from "@/lib/radisconfig";
 
 export async function DELETE(req: Request) {
     try {
@@ -13,10 +14,15 @@ export async function DELETE(req: Request) {
         }
 
         const deletedUser = await UserModel.findOneAndDelete({ email });
-
+        console.log(deletedUser);
+        
         if (!deletedUser) {
             return NextResponse.json({ success: false, message: "User not found." }, { status: 404 });
         }
+        const data = await redis.zrem("Notification token",deletedUser.token)
+
+        console.log("removed from redis",data);
+        
 
         return NextResponse.json({ success: true, message: "User deleted successfully." }, { status: 200 });
 

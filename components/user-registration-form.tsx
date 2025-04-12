@@ -14,6 +14,7 @@ interface FormData {
   email: string
   age: number
   token: string
+  time: string 
 }
 
 interface ApiResponse {
@@ -25,6 +26,7 @@ interface ApiResponse {
     email: string
     age: string // Matches your API response
     token: string
+    time:string
     __v?: number
 }
 }
@@ -35,7 +37,8 @@ export function AuthForm() {
     name: "",
     email: "",
     age: 0,
-    token: ""
+    token: "",
+    time: "" 
   })
   const { toast } = useToast()
   const router = useRouter()
@@ -44,7 +47,7 @@ export function AuthForm() {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: name === "age" ? parseInt(value) || 0 : value
+      [name]: name === "age" ? parseInt(value) : value
     }))
   }
 
@@ -107,7 +110,8 @@ export function AuthForm() {
         name: "",
         email: "",
         age: 0,
-        token: ""
+        token: "",
+        time:""
       })
 
       toast({
@@ -179,6 +183,20 @@ export function AuthForm() {
               disabled={isSubmitting}
             />
           </div>
+          <div className="space-y-2">
+  <Label htmlFor="time" className="text-white">Preferred Notification Time</Label>
+  <Input
+    id="time"
+    name="time"
+    type="time"
+    value={formData.time}
+    onChange={handleChange}
+    required
+    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+    disabled={isSubmitting}
+  />
+</div>
+          
         </CardContent>
         <CardFooter>
           <div className="flex flex-col items-center justify-center w-full">

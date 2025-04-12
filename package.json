@@ -51,6 +51,7 @@
     "firebase-admin": "^13.2.0",
     "gcp-metadata": "latest",
     "input-otp": "1.4.1",
+    "ioredis": "^5.6.1",
     "jsonwebtoken": "^9.0.2",
     "kerberos": "latest",
     "lucide-react": "^0.454.0",
