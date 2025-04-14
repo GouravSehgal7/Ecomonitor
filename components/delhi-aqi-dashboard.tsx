@@ -210,7 +210,7 @@ export function DelhiAQIDashboard() {
           <Button
             variant="outline"
             size="sm"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 max-sm:hidden"
             onClick={() => window.open("https://aqicn.org/city/delhi/", "_blank")}
           >
             <ExternalLink className="h-4 w-4 mr-2" />
@@ -231,14 +231,14 @@ export function DelhiAQIDashboard() {
         ) : aqiData ? (
           <div className="space-y-6">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-white/10 text-white">
+              <TabsList className="grid w-full grid-cols-3 bg-white/10 text-white ">
                 <TabsTrigger value="current" className="data-[state=active]:bg-white/20">
                   Current AQI
                 </TabsTrigger>
                 <TabsTrigger value="forecast" className="data-[state=active]:bg-white/20">
                   Forecast
                 </TabsTrigger>
-                <TabsTrigger value="stations" className="data-[state=active]:bg-white/20">
+                <TabsTrigger value="stations" className="data-[state=active]:bg-white/20  max-sm:text-[10px]">
                   Monitoring Stations
                 </TabsTrigger>
               </TabsList>

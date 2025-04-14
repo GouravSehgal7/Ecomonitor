@@ -9,7 +9,7 @@ export default function RegisterPage() {
       <AnimatedBackground />
       <NavigationBar />
 
-      <div className="container relative mx-auto py-6 pt-20 flex justify-center z-10">
+      <div className="container px-[4vw] relative mx-auto py-6 pt-20 flex justify-center z-10">
         <AuthForm />
       </div>
     </div>

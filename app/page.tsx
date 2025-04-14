@@ -45,12 +45,12 @@ export default function HomePage() {
       <NavigationBar />
 
 
-      <div className="container relative mx-auto py-6 pt-20 space-y-8 z-10">
+      <div className=" container px-[3vw] relative mx-auto py-6 pt-20 space-y-8 z-10">
         <header className="space-y-2">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold tracking-tight text-white">Air Quality Monitor</h1>
             <div className="flex items-center gap-2">
-              <Link href="/notifications">
+              {/* <Link href="/notifications">
                 <Button
                   variant="outline"
                   size="icon"
@@ -58,7 +58,7 @@ export default function HomePage() {
                 >
                   <Bell className="h-4 w-4 text-white" />
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <p className="text-white/80">Real-time air quality predictions and insights for Delhi regions</p>

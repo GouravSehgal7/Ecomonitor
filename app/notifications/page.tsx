@@ -41,7 +41,7 @@ export default function NotificationsPage() {
       <AnimatedBackground />
 
 
-      <div className="container relative mx-auto py-6 space-y-6 z-10">
+      <div className=" px-[4vw] relative mx-auto py-6 space-y-6 z-10">
         <div className="flex items-center gap-2">
           <Link href="/">
             <Button variant="ghost" size="icon" className="bg-white/10 text-white hover:bg-white/20">

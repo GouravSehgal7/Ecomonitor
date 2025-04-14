@@ -29,7 +29,7 @@ export default function RecommendationsPage() {
       <HealthAnimation />
       <NavigationBar />
 
-      <div className="container relative mx-auto py-6 pt-20 space-y-6 z-10">
+      <div className="container px-[4vw] relative mx-auto py-6 pt-20 space-y-6 z-10">
         <h1 className="text-3xl font-bold tracking-tight text-white">Personalized Recommendations</h1>
 
         {!showRecommendations ? (
@@ -115,14 +115,14 @@ export default function RecommendationsPage() {
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="outdoor">
-                  <TabsList className="grid w-full grid-cols-3 bg-white/10 text-white">
-                    <TabsTrigger value="outdoor" className="data-[state=active]:bg-white/20">
+                  <TabsList className="grid w-full grid-cols-3 bg-white/10 text-white ">
+                    <TabsTrigger value="outdoor" className="data-[state=active]:bg-white/20 max-sm:text-[3vw]">
                       Outdoor Activity
                     </TabsTrigger>
-                    <TabsTrigger value="health" className="data-[state=active]:bg-white/20">
+                    <TabsTrigger value="health" className="data-[state=active]:bg-white/20 max-sm:text-[3vw]">
                       Health Measures
                     </TabsTrigger>
-                    <TabsTrigger value="nutrition" className="data-[state=active]:bg-white/20">
+                    <TabsTrigger value="nutrition" className="data-[state=active]:bg-white/20 max-sm:text-[3vw]">
                       Nutrition
                     </TabsTrigger>
                   </TabsList>
@@ -292,7 +292,7 @@ export default function RecommendationsPage() {
           </div>
         )}
 
-        <div><a href="https://www.google.com/search?q=hospital+near+me&rlz=1C1RXQR_enIN1090IN1090&oq=hospital+near+me&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORixAxjJAxiABDINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ3OTRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&dlnr=1&ved=2ahUKEwiV0dnokrKMAxW_wzgGHRWTETgQl6ENegQIDBAG" >Health care near me click me</a></div>
+        {/* <div><a href="https://www.google.com/search?q=hospital+near+me&rlz=1C1RXQR_enIN1090IN1090&oq=hospital+near+me&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORixAxjJAxiABDINCAEQABiSAxiABBiKBTINCAIQABiSAxiABBiKBTIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ3OTRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&dlnr=1&ved=2ahUKEwiV0dnokrKMAxW_wzgGHRWTETgQl6ENegQIDBAG" >Health care near me click me</a></div> */}
       </div>
     </div>
   )

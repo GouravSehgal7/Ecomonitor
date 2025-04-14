@@ -39,7 +39,7 @@ export default function TrafficMonitorPage() {
       <AnimatedBackground />
       <NavigationBar />
 
-      <div className="container relative mx-auto py-6 pt-20 space-y-6 z-10">
+      <div className="container px-[4vw] relative mx-auto py-6 pt-20 space-y-6 z-10">
         <h1 className="text-3xl font-bold tracking-tight text-white">Traffic Monitoring</h1>
 
         {showAlert && <TrafficAlert onClose={() => setShowAlert(false)} />}

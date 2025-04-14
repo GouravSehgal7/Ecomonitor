@@ -221,7 +221,7 @@ export default function WaterQualityPage() {
       <WaterPollutionAnimation />
       <NavigationBar />
 
-      <div className="container relative mx-auto py-6 pt-20 space-y-6 z-10">
+      <div className=" container px-[3vw] relative mx-auto py-6 pt-20 space-y-6 z-10">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold tracking-tight text-white">Water Quality Monitor</h1>
 {/* 
