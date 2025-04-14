@@ -4,9 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AirQualityChart } from "@/components/air-quality-chart"
 import { AirQualityMap } from "@/components/air-quality-map"
 // import { PollutionIndex } from "@/components/pollution-index"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Bell, Info } from "lucide-react"
-import Link from "next/link"
+// import { Button } from "@/components/ui/button"
+// import { ArrowRight, Bell, Info } from "lucide-react"
+// import Link from "next/link"
 import { PollutionSources } from "@/components/pollution-sources"
 import { AnimatedBackground } from "@/components/animated-background"
 import { DelhiAQIDashboard } from "@/components/delhi-aqi-dashboard"
@@ -33,9 +33,9 @@ export default function HomePage() {
 
   useEffect(() => {
    requestPermission() 
-    // onMessageListener().then((payload) => {
-    //   alert(`New Notification: ${payload.notification.title}`);
-    // }).catch((err) => console.log("Notification error: ", err));
+    onMessageListener().then((payload) => {
+      alert(`New Notification: ${payload?.notification?.title}`);
+    }).catch((err) => console.log("Notification error: ", err));
   }, []);
 
 

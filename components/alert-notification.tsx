@@ -35,7 +35,7 @@ export function AlertNotification() {
     // This would normally be replaced with real-time data monitoring
     const checkForAlerts = () => {
       // Simulate random alerts for demonstration
-      const randomAlert = Math.random() > 0.7
+      const randomAlert = Math.random() > 0.9
 
       if (randomAlert) {
         const alertTypes: AlertData[] = [
@@ -72,28 +72,24 @@ export function AlertNotification() {
         const newAlert = alertTypes[Math.floor(Math.random() * alertTypes.length)]
 
         // Check if this alert is already in the queue
-        if (!alerts.some((alert) => alert.parameter === newAlert.parameter)) {
-          setAlerts((prev) => [...prev, newAlert])
+        if (!alerts.some((alert) => alert.parameter === newAlert.parameter) && alerts.length < 2) {
+          setAlerts((prev) => [...prev, newAlert]);
         }
+        
       }
     }
-
-    // Check for alerts every 30 seconds
     const interval = setInterval(checkForAlerts, 30000)
 
-    // Initial check
     checkForAlerts()
 
     return () => clearInterval(interval)
   }, [alerts])
 
-  // Show alerts one by one
   useEffect(() => {
     if (alerts.length > 0 && !showAlert) {
       setCurrentAlert(alerts[0])
       setShowAlert(true)
 
-      // Remove this alert from the queue
       setAlerts((prev) => prev.slice(1))
 
       // Play alert sound
