@@ -7,4 +7,4 @@ export const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID
 };
-console.log();
+// console.log();

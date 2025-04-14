@@ -54,13 +54,13 @@ export function WaterQualityTrends() {
     <div className="space-y-6">
       <Tabs defaultValue="monthly">
         <TabsList className="grid w-full grid-cols-3 bg-white/10 text-white">
-          <TabsTrigger value="monthly" className="data-[state=active]:bg-white/20">
+          <TabsTrigger value="monthly" className="data-[state=active]:bg-white/20 max-sm:text-[3vw]">
             Monthly Trends
           </TabsTrigger>
-          <TabsTrigger value="seasonal" className="data-[state=active]:bg-white/20">
+          <TabsTrigger value="seasonal" className="data-[state=active]:bg-white/20 max-sm:text-[3vw]">
             Seasonal Impact
           </TabsTrigger>
-          <TabsTrigger value="source" className="data-[state=active]:bg-white/20">
+          <TabsTrigger value="source" className="data-[state=active]:bg-white/20 max-sm:text-[2.5vw]">
             Source Comparison
           </TabsTrigger>
         </TabsList>

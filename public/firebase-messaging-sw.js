@@ -35,5 +35,5 @@ messaging.onBackgroundMessage((payload) => {
 
   self.addEventListener("notificationclick", (event) => {
     event.notification.close();
-    event.waitUntil(clients.openWindow("https://ecomonitor.onrender.com"));
+    event.waitUntil(clients.openWindow("https://ecomonitor-2.onrender.com"));
 });
